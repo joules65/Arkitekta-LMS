@@ -1,25 +1,39 @@
 import React from 'react';
-import {Button} from "@/components/ui/button";
+import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import Link from "next/link";
+import { subjectsColors } from "@/constants";
 
 interface CompanionCardProps {
     id: string;
     name: string;
-    duration:number;
-    topic:string;
-    color: string;
-    subject:string;
+    duration: number;
+    topic: string;
+    subject: string;
+    bookmarked?: boolean;
 }
 
-const CompanionCard = ({id,name,topic,duration,color,subject,}:CompanionCardProps) => {
+const CompanionCard = ({
+    id,
+    name,
+    topic,
+    duration,
+    subject,
+    bookmarked = false
+}: CompanionCardProps) => {
     return (
-        <article className="companion-card" style={{ backgroundColor:color }}>
+        <article 
+            className="companion-card hover:scale-[1.02] transition-transform duration-200" 
+            style={{ backgroundColor: subjectsColors[subject.toLowerCase()] }}
+        >
             <div className="flex justify-between items-center">
                 <div className="subject-badge">{subject}</div>
-                <Button className="companion-bookmark">
+                <Button 
+                    className="companion-bookmark hover:bg-black/80 transition-colors"
+                    onClick={() => console.log('Bookmark clicked', id)}
+                >
                     <Image
-                        src="/icons/bookmark.svg"
+                        src={bookmarked ? "/icons/bookmark-filled.svg" : "/icons/bookmark.svg"}
                         alt="bookmark"
                         width={15}
                         height={18.5}
@@ -39,12 +53,11 @@ const CompanionCard = ({id,name,topic,duration,color,subject,}:CompanionCardProp
                 <p className="text-sm">{duration} minutes</p>
             </div>
 
-            <Link href={`/companion/${id}`} className="w-full">
-                <Button className="btn-primary w-full justify-center">
+            <Link href={`/companions/${id}`} className="w-full">
+                <Button className="btn-primary w-full justify-center hover:opacity-90 transition-opacity">
                     Begin Lesson
                 </Button>
             </Link>
-
         </article>
     );
 };

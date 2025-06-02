@@ -4,14 +4,12 @@ import React from 'react'
 import CompanionCard from "@/components/CompanionCard";
 import CompanionList from "@/components/CompanionList";
 import Cta from "@/components/CTA";
-import {recentSessions} from "@/constants";
+import { recentSessions } from "@/constants";
 
 const Page = () => {
   return (
     <main>
       <h1 className="text-2xl">Popular Companions</h1>
-        {/* Placeholder Data removed to be used later for Onboarding functionality. */}
-        {/*Add Hashtag functionality with Bolt & Age wall */}
         <section className="home-section">
              <CompanionCard
                 id="123"
@@ -19,7 +17,7 @@ const Page = () => {
                 topic="Insight into one of Nigeria's most prominent females."
                 duration={45}
                 subject="History"
-                color="#fda4af"
+                bookmarked={true}
             />
             <CompanionCard
                 id="124"
@@ -27,7 +25,7 @@ const Page = () => {
                 topic="Aftermath of a dismantled Apartheid."
                 duration={30}
                 subject="History"
-                color="#5eead4"
+                bookmarked={false}
             />
             <CompanionCard
                 id="125"
@@ -35,14 +33,14 @@ const Page = () => {
                 topic="Let's talk Mansa Musa."
                 duration={35}
                 subject="economics"
-                color="#7dd3fc"
+                bookmarked={false}
             />
         </section>
         <section className="home-section">
             <CompanionList
                 title="Recently Completed Lessons"
-                companions = {recentSessions}
-                classNames = "w-2/3 max-lg:w-full"
+                companions={recentSessions}
+                classNames="w-2/3 max-lg:w-full"
             />
             <Cta/>
         </section>
