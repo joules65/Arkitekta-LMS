@@ -3,19 +3,48 @@ import React from 'react'
 
 import CompanionCard from "@/components/CompanionCard";
 import CompanionList from "@/components/CompanionList";
+import Cta from "@/components/CTA";
+import {recentSessions} from "@/constants";
 
 const Page = () => {
   return (
     <main>
-      <h1 className="text-2xl underline">Popular Companions</h1>
+      <h1 className="text-2xl">Popular Companions</h1>
         {/* Placeholder Data removed to be used later for Onboarding functionality. */}
+        {/*Add Hashtag functionality with Bolt & Age wall */}
         <section className="home-section">
-            <CompanionCard />
-            <CompanionCard/>
-            <CompanionCard/>
+             <CompanionCard
+                id="123"
+                name="Queen Amina of Zaria"
+                topic="Insight into one of Nigeria's most prominent females."
+                duration={45}
+                subject="History"
+                color="#fda4af"
+            />
+            <CompanionCard
+                id="124"
+                name="Birth of the Rainbow Nation"
+                topic="Aftermath of a dismantled Apartheid."
+                duration={30}
+                subject="History"
+                color="#5eead4"
+            />
+            <CompanionCard
+                id="125"
+                name="World's Richest Man"
+                topic="Let's talk Mansa Musa."
+                duration={35}
+                subject="economics"
+                color="#7dd3fc"
+            />
         </section>
         <section className="home-section">
-            <CompanionList />
+            <CompanionList
+                title="Recently Completed Lessons"
+                companions = {recentSessions}
+                classNames = "w-2/3 max-lg:w-full"
+            />
+            <Cta/>
         </section>
     </main>
   )
